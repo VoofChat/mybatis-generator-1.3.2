@@ -1396,15 +1396,19 @@ public abstract class IntrospectedTable {
         sb.setLength(0);
         sb.append(pakkage);
         sb.append('.');
+        sb.append(AppConfig.ENTITY_FILE_PREFIX);
         sb.append(fullyQualifiedTable.getDomainObjectName());
-        sb.append("WithBLOBs"); 
+        sb.append("WithBLOBs");
+        sb.append(AppConfig.ENTITY_FILE_SUFFIX);
         setRecordWithBLOBsType(sb.toString());
 
         sb.setLength(0);
         sb.append(pakkage);
         sb.append('.');
+        sb.append(AppConfig.ENTITY_FILE_PREFIX);
         sb.append(fullyQualifiedTable.getDomainObjectName());
-        sb.append("Example"); 
+        sb.append("Example");
+        sb.append(AppConfig.ENTITY_FILE_SUFFIX);
         setExampleType(sb.toString());
     }
 

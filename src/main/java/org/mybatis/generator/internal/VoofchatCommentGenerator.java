@@ -32,7 +32,7 @@ import java.util.List;
  *
  * @author Lizhihao
  */
-public class HairyCommentGenerator extends DefaultCommentGenerator {
+public class VoofchatCommentGenerator extends DefaultCommentGenerator {
 
 
     @Override

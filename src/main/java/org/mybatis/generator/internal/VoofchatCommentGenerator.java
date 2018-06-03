@@ -92,15 +92,10 @@ public class VoofchatCommentGenerator extends DefaultCommentGenerator {
         // 添加字段注释
         StringBuffer sb = new StringBuffer();
         field.addJavaDocLine("/**");
-        field.addJavaDocLine(" * <pre>");
         if (introspectedColumn.getRemarks() != null)
             field.addJavaDocLine(" * " + introspectedColumn.getRemarks());
-        sb.append(" * 表字段 : ");
-        sb.append(introspectedTable.getFullyQualifiedTable());
-        sb.append('.');
         sb.append(introspectedColumn.getActualColumnName());
         field.addJavaDocLine(sb.toString());
-        field.addJavaDocLine(" * </pre>");
         // addJavadocTag(field, false);
         field.addJavaDocLine(" */");
     }
@@ -108,61 +103,61 @@ public class VoofchatCommentGenerator extends DefaultCommentGenerator {
     @Override
     public void addGetterComment(Method method, IntrospectedTable introspectedTable, IntrospectedColumn introspectedColumn) {
         // get方法注释
-        StringBuffer sb = new StringBuffer();
-        method.addJavaDocLine("/**");
-        method.addJavaDocLine(" * <pre>");
-        method.addJavaDocLine(" * 获取：" + introspectedColumn.getRemarks());
-        sb.append(" * 表字段：");
-        sb.append(introspectedTable.getFullyQualifiedTable());
-        sb.append('.');
-        sb.append(introspectedColumn.getActualColumnName());
-        method.addJavaDocLine(sb.toString());
-        method.addJavaDocLine(" * </pre>");
-        method.addJavaDocLine(" *");
-        sb = new StringBuffer();
-        sb.append(" * @return ");
-        sb.append(introspectedTable.getFullyQualifiedTable());
-        sb.append('.');
-        sb.append(introspectedColumn.getActualColumnName());
-        sb.append("：");
-        sb.append(introspectedColumn.getRemarks());
-        method.addJavaDocLine(sb.toString());
-        // addJavadocTag(method, false);
-        method.addJavaDocLine(" */");
+//        StringBuffer sb = new StringBuffer();
+//        method.addJavaDocLine("/**");
+//        method.addJavaDocLine(" * <pre>");
+//        method.addJavaDocLine(" * 获取：" + introspectedColumn.getRemarks());
+//        sb.append(" * 表字段：");
+//        sb.append(introspectedTable.getFullyQualifiedTable());
+//        sb.append('.');
+//        sb.append(introspectedColumn.getActualColumnName());
+//        method.addJavaDocLine(sb.toString());
+//        method.addJavaDocLine(" * </pre>");
+//        method.addJavaDocLine(" *");
+//        sb = new StringBuffer();
+//        sb.append(" * @return ");
+//        sb.append(introspectedTable.getFullyQualifiedTable());
+//        sb.append('.');
+//        sb.append(introspectedColumn.getActualColumnName());
+//        sb.append("：");
+//        sb.append(introspectedColumn.getRemarks());
+//        method.addJavaDocLine(sb.toString());
+//        // addJavadocTag(method, false);
+//        method.addJavaDocLine(" */");
     }
 
     @Override
     public void addSetterComment(Method method, IntrospectedTable introspectedTable, IntrospectedColumn introspectedColumn) {
         // set方法注释
-        StringBuffer sb = new StringBuffer();
-        method.addJavaDocLine("/**");
-        method.addJavaDocLine(" * <pre>");
-        method.addJavaDocLine(" * 设置：" + introspectedColumn.getRemarks());
-        sb.append(" * 表字段：");
-        sb.append(introspectedTable.getFullyQualifiedTable());
-        sb.append('.');
-        sb.append(introspectedColumn.getActualColumnName());
-        method.addJavaDocLine(sb.toString());
-        method.addJavaDocLine(" * </pre>");
-        method.addJavaDocLine(" *");
-        Parameter parm = method.getParameters().get(0);
-        method.addJavaDocLine(" * @param " + parm.getName());
-        sb = new StringBuffer();
-        sb.append(" *            ");
-        sb.append(introspectedTable.getFullyQualifiedTable());
-        sb.append('.');
-        sb.append(introspectedColumn.getActualColumnName());
-        sb.append("：");
-        sb.append(introspectedColumn.getRemarks());
-        method.addJavaDocLine(sb.toString());
-        // addJavadocTag(method, false);
-        method.addJavaDocLine(" */");
+//        StringBuffer sb = new StringBuffer();
+//        method.addJavaDocLine("/**");
+//        method.addJavaDocLine(" * <pre>");
+//        method.addJavaDocLine(" * 设置：" + introspectedColumn.getRemarks());
+//        sb.append(" * 表字段：");
+//        sb.append(introspectedTable.getFullyQualifiedTable());
+//        sb.append('.');
+//        sb.append(introspectedColumn.getActualColumnName());
+//        method.addJavaDocLine(sb.toString());
+//        method.addJavaDocLine(" * </pre>");
+//        method.addJavaDocLine(" *");
+//        Parameter parm = method.getParameters().get(0);
+//        method.addJavaDocLine(" * @param " + parm.getName());
+//        sb = new StringBuffer();
+//        sb.append(" *            ");
+//        sb.append(introspectedTable.getFullyQualifiedTable());
+//        sb.append('.');
+//        sb.append(introspectedColumn.getActualColumnName());
+//        sb.append("：");
+//        sb.append(introspectedColumn.getRemarks());
+//        method.addJavaDocLine(sb.toString());
+//        // addJavadocTag(method, false);
+//        method.addJavaDocLine(" */");
     }
 
     @Override
     public void addComment(XmlElement xmlElement) {
         /*
-        xmlElement.addElement(new TextElement("<!--")); //$NON-NLS-1$
+        xmlElement.addElement(new TextElement("<!--")); 
 
         StringBuilder sb = new StringBuilder();
         sb.append(MergeConstants.NEW_ELEMENT_TAG);
@@ -170,17 +165,17 @@ public class VoofchatCommentGenerator extends DefaultCommentGenerator {
         */
 //        xmlElement
 //                .addElement(new TextElement(
-//                        "  This element is automatically generated by MyBatis Generator, do not modify.")); //$NON-NLS-1$
+//                        "  This element is automatically generated by MyBatis Generator, do not modify.")); 
 
 //        String s = getDateString();
 //        if (s != null) {
 //            sb.setLength(0);
-//            sb.append("  This element was generated on "); //$NON-NLS-1$
+//            sb.append("  This element was generated on "); 
 //            sb.append(s);
 //            sb.append('.');
 //            xmlElement.addElement(new TextElement(sb.toString()));
 //        }
 
-        /*xmlElement.addElement(new TextElement("-->")); //$NON-NLS-1$*/
+        /*xmlElement.addElement(new TextElement("-->")); */
     }
 }

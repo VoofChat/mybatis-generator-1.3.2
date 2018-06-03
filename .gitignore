@@ -1,0 +1,20 @@
+.idea/
+*.iml
+target
+*.orig
+.idea
+.swp
+*.ipr
+*.iws
+*.class
+*target*
+tmp
+.DS_Store
+iml
+
+# 日志
+log
+*.log
+
+# virtual machine crash logs
+hs_err_pid*

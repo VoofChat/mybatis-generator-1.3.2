@@ -94,10 +94,14 @@ public class VoofchatCommentGenerator extends DefaultCommentGenerator {
         field.addJavaDocLine("/**");
         if (introspectedColumn.getRemarks() != null)
             field.addJavaDocLine(" * " + introspectedColumn.getRemarks());
-        sb.append(introspectedColumn.getActualColumnName());
+//        sb.append(introspectedColumn.getActualColumnName());
         field.addJavaDocLine(sb.toString());
         // addJavadocTag(field, false);
         field.addJavaDocLine(" */");
+    }
+
+    public void addFieldComment(Field field, IntrospectedTable introspectedTable) {
+
     }
 
     @Override

@@ -5,12 +5,15 @@
 ### 1.使用maven的MyBatis-Generator。
 
 ### 2.定制自己的mybtis-generator-core.jar
-> 1）git clone https://github.com/VoofChat/mybatis-generator-1.3.2 到本地
-> 2）安装这个jar到本地仓库
-> ```java
-> mvn install -Dmaven.test.skip=true
-> ```
-> 3) 修改pom.xml文件
+> 2.1 git clone https://github.com/VoofChat/mybatis-generator-1.3.2 到本地
+
+> 2.2 安装这个jar到本地仓库
+
+```java
+mvn install -Dmaven.test.skip=true
+```
+
+> 2.3 修改pom.xml文件
 ```xml
 <build>
     <finalName>webapp</finalName>
@@ -35,7 +38,7 @@
       </plugins>
   </build>
 ```
-> 4)修改generatorConfig.xml文件
+> 2.4 修改generatorConfig.xml文件
 ```xml
 <commentGenerator type="org.mybatis.generator.internal.VoofchatCommentGenerator">
     <property name="javaFileEncoding" value="UTF-8"/>
@@ -44,7 +47,7 @@
     <property name="suppressDate" value="true" />
 </commentGenerator>
 ```
-> 5）执行 mvn mybatis-generator:generate
+> 2.5 执行 mvn mybatis-generator:generate
 
 -------------------
 

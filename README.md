@@ -97,4 +97,6 @@ public static final String MAPPER_FILE_PREFIX = PROJECT_NAME;
 public static final String MAPPER_FILE_SUFFIX = "Mapper";
 ```
 
->mvn install -Dmaven.test.skip=true 
+效果如下：
+![这里写图片描述](https://img-blog.csdn.net/20180603134235996?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTM5MjI2ODE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+

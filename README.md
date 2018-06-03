@@ -97,4 +97,3 @@ public static final String MAPPER_FILE_PREFIX = PROJECT_NAME;
 public static final String MAPPER_FILE_SUFFIX = "Mapper";
 ```
 
-效果如下：

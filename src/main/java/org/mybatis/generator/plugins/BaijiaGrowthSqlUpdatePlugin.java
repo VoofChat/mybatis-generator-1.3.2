@@ -49,21 +49,13 @@ public class BaijiaGrowthSqlUpdatePlugin extends PluginAdapter {
             }
         }
 
-//        for (String str : removeColumns){
-//            System.out.println(str);
-//        }
-//
-//        for (String str : removeFields){
-//            System.out.println(str);
-//        }
-
         return true;
     }
 
     @Override
     public boolean sqlMapUpdateByPrimaryKeySelectiveElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable) {
-        System.out.println("sqlMapUpdateByPrimaryKeySelectiveElementGenerated:");
+//        System.out.println("sqlMapUpdateByPrimaryKeySelectiveElementGenerated:");
 //        System.out.println("before update:");
 //        System.out.println(element.getFormattedContent(1));
 
@@ -129,7 +121,7 @@ public class BaijiaGrowthSqlUpdatePlugin extends PluginAdapter {
                     String value = attr.getValue();
 //                    if (value != null && (value.contains("createTime") || value.contains("updateTime"))) {
                     if (value != null && isContainsRemoveColums(this.removeFields, value)) {
-                        System.out.println("remove:" + value);
+//                        System.out.println("remove:" + value);
                         iterator.remove();
                     }
                 }
@@ -142,7 +134,7 @@ public class BaijiaGrowthSqlUpdatePlugin extends PluginAdapter {
                 String content = te.getContent();
 //                if (content != null && (content.contains("create_time") || content.contains("update_time"))) {
                 if (content != null && isContainsRemoveColums(this.removeColumns, content)) {
-                    System.out.println("remove:" + content);
+//                    System.out.println("remove:" + content);
                     iterator.remove();
                 }
 

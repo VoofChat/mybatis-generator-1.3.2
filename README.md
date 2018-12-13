@@ -23,7 +23,7 @@ mvn install -Dmaven.test.skip=true
               <artifactId>mybatis-generator-maven-plugin</artifactId>
               <version>1.3.2</version>
               <configuration>
-                  <configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
+                  <configurationFile>src/main/resources/generator-config.xml</configurationFile>
                   <verbose>true</verbose>
                   <overwrite>true</overwrite>
               </configuration>
@@ -38,7 +38,7 @@ mvn install -Dmaven.test.skip=true
       </plugins>
   </build>
 ```
-> 2.4 修改generatorConfig.xml文件
+> 2.4 generator-config.xml配置信息
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE generatorConfiguration PUBLIC

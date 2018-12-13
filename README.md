@@ -120,7 +120,7 @@ mvn install -Dmaven.test.skip=true
 
         <table tableName="rp_microweb_module" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
         </table>
         
     </context>

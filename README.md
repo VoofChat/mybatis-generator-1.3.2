@@ -63,6 +63,14 @@ mvn install -Dmaven.test.skip=true
         <plugin type="org.mybatis.generator.plugins.LombokPlugin" >
             <property name="hasLombok" value="true"/>
         </plugin>
+        
+        <!-- 
+            sql update 过滤插件
+            removeColumns ：指定过滤的sql字段名称，多个用分号","间隔
+        -->
+        <plugin type="org.mybatis.generator.plugins.BaijiaGrowthSqlUpdatePlugin" >
+            <property name="removeColumns" value="name,create_time,update_time"/>
+        </plugin>
 
         <!-- 增加Models ToStirng方法 -->
         <!--<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />-->

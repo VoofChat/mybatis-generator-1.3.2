@@ -209,7 +209,7 @@ public abstract class IntrospectedTable {
     protected Map<String, Object> attributes;
 
     /** Internal attributes are used to store commonly accessed items by all code generators. */
-    protected Map<IntrospectedTable.InternalAttribute, String> internalAttributes;
+    protected Map<InternalAttribute, String> internalAttributes;
     
     /**
      * Table remarks retrieved from database metadata
@@ -234,7 +234,7 @@ public abstract class IntrospectedTable {
         baseColumns = new ArrayList<IntrospectedColumn>();
         blobColumns = new ArrayList<IntrospectedColumn>();
         attributes = new HashMap<String, Object>();
-        internalAttributes = new HashMap<IntrospectedTable.InternalAttribute, String>();
+        internalAttributes = new HashMap<InternalAttribute, String>();
     }
 
     /**
@@ -1325,14 +1325,14 @@ public abstract class IntrospectedTable {
         StringBuilder sb = new StringBuilder();
         sb.append(calculateJavaClientImplementationPackage());
         sb.append('.');
-        sb.append(fullyQualifiedTable.getDomainObjectName());
+        sb.append(fullyQualifiedTable.getDomainObjectName().replace(AppConfig.TABLE_REPLACE_KEYWORDS,""));
         sb.append("DAOImpl");
         setDAOImplementationType(sb.toString());
 
         sb.setLength(0);
         sb.append(calculateJavaClientInterfacePackage());
         sb.append('.');
-        sb.append(fullyQualifiedTable.getDomainObjectName());
+        sb.append(fullyQualifiedTable.getDomainObjectName().replace(AppConfig.TABLE_REPLACE_KEYWORDS,""));
         sb.append("DAO");
         setDAOInterfaceType(sb.toString());
 
@@ -1340,7 +1340,7 @@ public abstract class IntrospectedTable {
         sb.append(calculateJavaClientInterfacePackage());
         sb.append('.');
         sb.append(AppConfig.DAO_FILE_PREFIX);
-        sb.append(fullyQualifiedTable.getDomainObjectName());
+        sb.append(fullyQualifiedTable.getDomainObjectName().replace(AppConfig.TABLE_REPLACE_KEYWORDS,""));
 //        sb.append("Mapper"); 
         sb.append(AppConfig.DAO_FILE_SUFFIX);
         setMyBatis3JavaMapperType(sb.toString());
@@ -1348,7 +1348,7 @@ public abstract class IntrospectedTable {
         sb.setLength(0);
         sb.append(calculateJavaClientInterfacePackage());
         sb.append('.');
-        sb.append(fullyQualifiedTable.getDomainObjectName());
+        sb.append(fullyQualifiedTable.getDomainObjectName().replace(AppConfig.TABLE_REPLACE_KEYWORDS,""));
         sb.append("SqlProvider"); 
         setMyBatis3SqlProviderType(sb.toString());
     }
@@ -1379,7 +1379,7 @@ public abstract class IntrospectedTable {
         sb.append(pakkage);
         sb.append('.');
         sb.append(AppConfig.ENTITY_FILE_PREFIX);
-        sb.append(fullyQualifiedTable.getDomainObjectName());
+        sb.append(fullyQualifiedTable.getDomainObjectName().replace(AppConfig.TABLE_REPLACE_KEYWORDS,""));
         sb.append("Key"); 
         sb.append(AppConfig.ENTITY_FILE_SUFFIX);
         setPrimaryKeyType(sb.toString());
@@ -1388,7 +1388,7 @@ public abstract class IntrospectedTable {
         sb.append(pakkage);
         sb.append('.');
         sb.append(AppConfig.ENTITY_FILE_PREFIX);
-        sb.append(fullyQualifiedTable.getDomainObjectName());
+        sb.append(fullyQualifiedTable.getDomainObjectName().replace(AppConfig.TABLE_REPLACE_KEYWORDS,""));
 //        sb.append("Po");
         sb.append(AppConfig.ENTITY_FILE_SUFFIX);
         setBaseRecordType(sb.toString());
@@ -1397,7 +1397,7 @@ public abstract class IntrospectedTable {
         sb.append(pakkage);
         sb.append('.');
         sb.append(AppConfig.ENTITY_FILE_PREFIX);
-        sb.append(fullyQualifiedTable.getDomainObjectName());
+        sb.append(fullyQualifiedTable.getDomainObjectName().replace(AppConfig.TABLE_REPLACE_KEYWORDS,""));
         sb.append("WithBLOBs");
         sb.append(AppConfig.ENTITY_FILE_SUFFIX);
         setRecordWithBLOBsType(sb.toString());
@@ -1406,7 +1406,7 @@ public abstract class IntrospectedTable {
         sb.append(pakkage);
         sb.append('.');
         sb.append(AppConfig.ENTITY_FILE_PREFIX);
-        sb.append(fullyQualifiedTable.getDomainObjectName());
+        sb.append(fullyQualifiedTable.getDomainObjectName().replace(AppConfig.TABLE_REPLACE_KEYWORDS,""));
         sb.append("Example");
         sb.append(AppConfig.ENTITY_FILE_SUFFIX);
         setExampleType(sb.toString());
@@ -1451,7 +1451,7 @@ public abstract class IntrospectedTable {
     protected String calculateMyBatis3XmlMapperFileName() {
         StringBuilder sb = new StringBuilder();
         sb.append(AppConfig.MAPPER_FILE_PREFIX);
-        sb.append(fullyQualifiedTable.getDomainObjectName());
+        sb.append(fullyQualifiedTable.getDomainObjectName().replace(AppConfig.TABLE_REPLACE_KEYWORDS,""));
         sb.append(AppConfig.MAPPER_FILE_SUFFIX);
         sb.append(".xml");
         return sb.toString();

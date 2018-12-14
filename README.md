@@ -89,9 +89,8 @@ mvn install -Dmaven.test.skip=true
         <!-- 注释配置信息 -->
         <commentGenerator type="org.mybatis.generator.internal.VoofchatCommentGenerator">
             <property name="javaFileEncoding" value="UTF-8"/>
-            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
-            <property name="suppressAllComments" value="false" />
-            <property name="suppressDate" value="true" />
+            <property name="email" value="zhengzhixiong@baijiahulian.com" />
+            <property name="author" value="郑志雄" />
         </commentGenerator>
 
         <!-- jdbc连接信息 -->

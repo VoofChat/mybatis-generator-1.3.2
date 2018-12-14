@@ -17,15 +17,17 @@ package org.mybatis.generator.internal;
 
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
-import org.mybatis.generator.api.dom.java.Field;
-import org.mybatis.generator.api.dom.java.InnerClass;
-import org.mybatis.generator.api.dom.java.Method;
-import org.mybatis.generator.api.dom.java.Parameter;
+import org.mybatis.generator.api.dom.java.*;
 import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.config.MergeConstants;
+import org.mybatis.generator.config.TableConfiguration;
+import org.mybatis.generator.internal.util.StringUtility;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * The Class DefaultCommentGenerator.
@@ -34,6 +36,36 @@ import java.util.List;
  */
 public class VoofchatCommentGenerator extends DefaultCommentGenerator {
 
+
+    /**
+     * 文件作者
+     */
+    private String author ;
+
+    /**
+     * 邮箱
+     */
+    private String email ;
+
+    public VoofchatCommentGenerator(){
+        this.author = "";
+        this.email = "";
+    }
+
+    @Override
+    public void addConfigurationProperties(Properties properties) {
+        super.addConfigurationProperties(properties);
+
+        this.author = properties.getProperty("author");
+        if (StringUtility.stringContainsSpace(this.author)){
+            this.author = "";
+        }
+
+        this.email = properties.getProperty("email");
+        if (StringUtility.stringContainsSpace(this.email)){
+            this.email = "";
+        }
+    }
 
     @Override
     public void addGeneralMethodComment(Method method, IntrospectedTable introspectedTable) {
@@ -51,6 +83,10 @@ public class VoofchatCommentGenerator extends DefaultCommentGenerator {
             method.addJavaDocLine(" * 根据主键来更新数据库记录");
         } else if ("selectAll".equals(method_name)) {
             method.addJavaDocLine(" * 获取全部数据库记录");
+        } else if ("updateByPrimaryKeySelective".equals(method_name)) {
+            method.addJavaDocLine(" * 根据主键来更新数据库记录");
+        } else if ("insertSelective".equals(method_name)) {
+            method.addJavaDocLine(" * 插入数据库记录");
         }
         method.addJavaDocLine(" *");
         List<Parameter> parameterList = method.getParameters();
@@ -60,6 +96,8 @@ public class VoofchatCommentGenerator extends DefaultCommentGenerator {
             method.addJavaDocLine(" * @param " + paramterName);
         }
         // addJavadocTag(method, false);
+
+        method.addJavaDocLine(" * @return ");
         method.addJavaDocLine(" */");
     }
 
@@ -71,7 +109,7 @@ public class VoofchatCommentGenerator extends DefaultCommentGenerator {
         innerClass.addJavaDocLine(" * 类注释");
         innerClass.addJavaDocLine(" * " + shortName);
         innerClass.addJavaDocLine(" * 数据库表：" + introspectedTable.getFullyQualifiedTable());
-        // addJavadocTag(innerClass, false);
+         addJavadocTag(innerClass, false);
         innerClass.addJavaDocLine(" */");
     }
 
@@ -83,8 +121,23 @@ public class VoofchatCommentGenerator extends DefaultCommentGenerator {
         innerClass.addJavaDocLine(" * 类注释");
         innerClass.addJavaDocLine(" * " + shortName);
         innerClass.addJavaDocLine(" * 数据库表：" + introspectedTable.getFullyQualifiedTable());
-        // addJavadocTag(innerClass, false);
+//         addJavadocTag(innerClass, false);
         innerClass.addJavaDocLine(" */");
+    }
+
+    @Override
+    public void addModelClassComment(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
+
+        String shortName = topLevelClass.getType().getShortName();
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy年MM月dd HH:mm");
+        topLevelClass.addJavaDocLine("/**");
+        topLevelClass.addJavaDocLine(" * 实体" + shortName + "对应数据库表" + introspectedTable.getFullyQualifiedTable());
+        topLevelClass.addJavaDocLine(" * ");
+        topLevelClass.addJavaDocLine(" * @author: " + this.author);
+        topLevelClass.addJavaDocLine(" * @email: " + this.email);
+        topLevelClass.addJavaDocLine(" * @date: " + sf.format(new Date()));
+        topLevelClass.addJavaDocLine(" * @description: ");
+        topLevelClass.addJavaDocLine(" */");
     }
 
     @Override
@@ -92,8 +145,9 @@ public class VoofchatCommentGenerator extends DefaultCommentGenerator {
         // 添加字段注释
         StringBuffer sb = new StringBuffer();
         field.addJavaDocLine("/**");
-        if (introspectedColumn.getRemarks() != null)
+        if (introspectedColumn.getRemarks() != null) {
             field.addJavaDocLine(" * " + introspectedColumn.getRemarks());
+        }
 //        sb.append(introspectedColumn.getActualColumnName());
 //        field.addJavaDocLine(sb.toString());
         // addJavadocTag(field, false);
@@ -183,4 +237,5 @@ public class VoofchatCommentGenerator extends DefaultCommentGenerator {
 
         /*xmlElement.addElement(new TextElement("-->")); */
     }
+
 }

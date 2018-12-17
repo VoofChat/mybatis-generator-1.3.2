@@ -33,6 +33,11 @@ mvn install -Dmaven.test.skip=true
                       <artifactId>mybatis-generator-core</artifactId>
                       <version>1.0.0</version>
                   </dependency>
+                  <dependency>
+                    <groupId>mysql</groupId>
+                    <artifactId>mysql-connector-java</artifactId>
+                    <version>5.1.34</version>
+                </dependency>
               </dependencies>
           </plugin>
       </plugins>

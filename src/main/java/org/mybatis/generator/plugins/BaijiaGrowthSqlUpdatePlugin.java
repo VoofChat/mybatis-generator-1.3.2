@@ -133,7 +133,7 @@ public class BaijiaGrowthSqlUpdatePlugin extends PluginAdapter {
                 TextElement te = (TextElement) element;
                 String content = te.getContent();
 //                if (content != null && (content.contains("create_time") || content.contains("update_time"))) {
-                if (content != null && isContainsRemoveColums(this.removeColumns, content)) {
+                if (content != null && isContainsRemoveColums(this.removeFields, content)) {
 //                    System.out.println("remove:" + content);
                     iterator.remove();
                 }
@@ -161,8 +161,10 @@ public class BaijiaGrowthSqlUpdatePlugin extends PluginAdapter {
     }
 
     private Boolean isContainsRemoveColums(String [] checkArr, String content) {
+        System.out.println("content:" + content);
         for (String str: checkArr) {
-            if (content.equals(str)) {
+            if (content.contains(str)) {
+
                 return true;
             }
         }

@@ -162,7 +162,7 @@ public class BaijiaGrowthSqlUpdatePlugin extends PluginAdapter {
 
     private Boolean isContainsRemoveColums(String [] checkArr, String content) {
         for (String str: checkArr) {
-            if (content.contains(str)) {
+            if (content.equals(str)) {
                 return true;
             }
         }

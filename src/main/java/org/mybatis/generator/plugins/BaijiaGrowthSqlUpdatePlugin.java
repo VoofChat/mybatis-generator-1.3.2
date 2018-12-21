@@ -154,7 +154,7 @@ public class BaijiaGrowthSqlUpdatePlugin extends PluginAdapter {
                 TextElement te = (TextElement) e;
                 if ( te.getContent().endsWith(",") ){
 //                    System.out.println("replace:" + te.getContent().replace(",", ""));
-
+                    // 在该映射器中updateByPrimaryKey 去掉"status = #{status,jdbcType=INTEGER}," 最后一个"，"逗号
                     te.setContent(te.getContent().substring(0, te.getContent().lastIndexOf(",") ));
                 }
             }

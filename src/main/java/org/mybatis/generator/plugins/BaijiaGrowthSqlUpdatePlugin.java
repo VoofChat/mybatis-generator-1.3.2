@@ -152,9 +152,10 @@ public class BaijiaGrowthSqlUpdatePlugin extends PluginAdapter {
             Element e = elements.get(elements.size() - 2);
             if (e instanceof TextElement){
                 TextElement te = (TextElement) e;
-                if ( te.getContent().contains(",") ){
+                if ( te.getContent().endsWith(",") ){
 //                    System.out.println("replace:" + te.getContent().replace(",", ""));
-                    te.setContent(te.getContent().replace(",", ""));
+
+                    te.setContent(te.getContent().substring(0, te.getContent().lastIndexOf(",") ));
                 }
             }
         }

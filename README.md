@@ -74,7 +74,7 @@ mvn install -Dmaven.test.skip=true
             removeColumns ：指定过滤的sql字段名称，多个用分号","间隔
         -->
         <plugin type="org.mybatis.generator.plugins.BaijiaGrowthSqlUpdatePlugin" >
-            <property name="removeColumns" value="name,create_time,update_time"/>
+            <property name="removeColumns" value="create_time,update_time"/>
         </plugin>
 
         <!-- 增加Models ToStirng方法 -->
